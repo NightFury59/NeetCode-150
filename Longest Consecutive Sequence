@@ -1,0 +1,23 @@
+var longestConsecutive = (nums, maxScore = 0) => {
+    for (const num of nums) {
+        let [ currNum, score ] = [ num, 1 ];
+
+        while (isStreak(nums, (currNum + 1))) {
+            currNum++;
+            score++;
+        }
+
+        maxScore = Math.max(maxScore, score);
+    }
+
+    return maxScore;
+}
+
+const isStreak = (nums, num) => {
+    for (let i = 0; i < nums.length; i++) {/* Time O(N) */
+        const isEqual = nums[i] === num
+        if (isEqual) return true;
+    }
+
+    return false;
+}
