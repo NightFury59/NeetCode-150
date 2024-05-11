@@ -1,20 +1,24 @@
-// O(N) time | O(1) space
+// O(n) time | O(1) space
+var twoSum = function(numbers, target) {
+    let l = 0;
+    let r = numbers.length - 1;
+    let res = []
 
-var twoSum = function (numbers, target) {
-    let [left, right] = [0, numbers.length - 1];
+    while (l < r) {
+        const sum = numbers[l] + numbers[r];
 
-    while (left < right) {
-        const sum = numbers[left] + numbers[right];
+        if (sum === target) {
+            res.push(l + 1, r + 1);
+            break;
+        }
 
-        const isTarget = sum === target;
-        if (isTarget) return [left + 1, right + 1];
+        if (sum < target) {
+            l++;
+        }
 
-        const isTargetGreater = sum < target;
-        if (isTargetGreater) left++;
-
-        const isTargetLess = target < sum;
-        if (isTargetLess) right--;
+        if (sum > target) {
+            r--;
+        }
     }
-
-    return [-1, -1];
+    return res
 };
