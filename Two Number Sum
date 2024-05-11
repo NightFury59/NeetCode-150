@@ -1,14 +1,13 @@
-// O(n) time | O(n) space
+// O(N) time | O(N) space
 var twoSum = function(nums, target) {
-    let mp = new Map()
-    
+    const twoNums = new Map();
+
     for (let i = 0; i < nums.length; i++) {
-        let diff = target - nums[i]
-        
-        if (mp.has(diff)) {
-            return [i, mp.get(diff)]
+        const potentialMatch = target - nums[i];
+        if (twoNums.has(potentialMatch)) {
+            return [twoNums.get(potentialMatch), i];
         }
-        
-        mp.set(nums[i], i)
+        twoNums.set(nums[i], i)
     }
+    return []
 };
