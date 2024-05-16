@@ -1,0 +1,11 @@
+// O(nlogn) time | O(1) space
+var findDuplicate = function(nums) {
+    nums.sort((a, b) => a - b)
+
+    for (let i = 0; i < nums.length; i++) {
+        const isDuplicate = nums[i - 1] === nums[i];
+        if (isDuplicate) return nums[i]
+    }
+
+    return -1
+};
