@@ -1,0 +1,21 @@
+// O(n) time | O(h) space, here h is the height of the tree
+
+class Solution {
+    diameterOfBinaryTree(root) {
+        const res = [0];
+        this.dfs(root, res);
+        return res[0];
+    }
+
+    dfs(root, res) {
+        if (root === null) {
+            return 0;
+        }
+
+        const left = this.dfs(root.left, res);
+        const right = this.dfs(root.right, res);
+        res[0] = Math.max(res[0], left + right)
+        
+        return 1 + Math.max(left, right);
+    }
+}
