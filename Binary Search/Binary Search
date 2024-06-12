@@ -1,4 +1,4 @@
-// O(log N) time | O(1) space
+// O(log(n) time | O(1) space
 
 class Solution {
 
@@ -7,7 +7,7 @@ class Solution {
         let right = nums.length - 1;
 
         while (left <= right) {
-            let middle = left + Math.floor((right - left) / 2);
+            let middle = Math.floor((left + right) / 2);
 
             if (nums[middle] > target) {
                 right = middle - 1;
