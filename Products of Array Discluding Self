@@ -1,0 +1,28 @@
+// O(n) time | O(n) space
+
+class Solution {
+
+    productExceptSelf(nums) {
+        let products = new Array(nums.length).fill(1);
+        let left = new Array(nums.length).fill(1);
+        let right = new Array(nums.length).fill(1);
+
+        let leftRunningProduct = 1;
+        for (let i = 0; i < nums.length; i++) {
+            left[i] = leftRunningProduct;
+            leftRunningProduct *= nums[i];
+        }
+
+        let rightRunningProduct = 1;
+        for(let i = nums.length - 1; i >= 0; i--) {
+            right[i] = rightRunningProduct;
+            rightRunningProduct *= nums[i];
+        }
+
+        for (let i = 0; i < nums.length; i++) {
+            products[i] = left[i] * right[i];
+        }
+
+        return products;
+    }
+}
